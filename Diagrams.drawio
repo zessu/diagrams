@@ -1,9 +1,36 @@
-<mxfile host="app.diagrams.net" modified="2023-10-04T07:40:15.089Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" version="22.0.2" etag="ViNSYORhV1lE4MB0dhan" type="github">
+<mxfile host="app.diagrams.net" modified="2023-10-04T08:15:23.524Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" etag="FxU_Ic9PvmrT-nIoEpAT" version="22.0.2" type="github">
   <diagram name="Page-1" id="re20L4hxvnKPXGSVpXeU">
-    <mxGraphModel>
+    <mxGraphModel dx="2131" dy="727" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="atC7XNbbnhA198ww7lKl-1" value="Task Queue&lt;br&gt;(Callback Queue)" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="350" y="250" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="atC7XNbbnhA198ww7lKl-2" value="MicroTask Queue" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="350" y="360" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="atC7XNbbnhA198ww7lKl-3" value="&lt;ol&gt;&lt;li&gt;Handles IO operations e.g reading files&lt;/li&gt;&lt;li&gt;Handles timers, DOM events e.g addEventListener&lt;/li&gt;&lt;li&gt;Handles web api e.g geolocation&lt;/li&gt;&lt;li&gt;Handles message passing e.g websockets&amp;nbsp;&lt;/li&gt;&lt;/ol&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="413" y="240" width="330" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="atC7XNbbnhA198ww7lKl-4" value="&lt;ol&gt;&lt;li&gt;Handles promise catch then statements&lt;/li&gt;&lt;li&gt;Mutation observer APIs&lt;/li&gt;&lt;li&gt;Handles process.nextTick()&lt;/li&gt;&lt;/ol&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="420" y="350" width="270" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="atC7XNbbnhA198ww7lKl-5" value="The event loop processes the MicroTask Queue before the Task Queue" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="330" y="190" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="atC7XNbbnhA198ww7lKl-7" value="Call Stack&lt;br&gt;this runs synchronous tasks" style="rounded=0;whiteSpace=wrap;html=1;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="100" y="220" width="130" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="atC7XNbbnhA198ww7lKl-14" value="Event Loop" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="510" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="atC7XNbbnhA198ww7lKl-15" value="Processes events in the call stack. Once there are no more async tasks to process it&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;checks the microtasks queue to process priority tasks, then processes items from the&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;task or callback queue. Libuv is the cross-platform library that handles these operations&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;by providing interfaces for operations across different operating system&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;and is responsible for making systems calls. It uses platform specific operations&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;e.g epoll on linux, kqueue on macos and IOCP on windows.&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="330" y="495" width="490" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="atC7XNbbnhA198ww7lKl-17" value="Session data is maintained though other means e.g sessions cookies, tokens e.t.c&lt;br&gt;That way if user A hits an express server and demands we respond to their websocket connection in 10 seconds&lt;br&gt;we can process user Bs file data. Specific user information or requests information is maintained using Http Request Context&lt;br&gt;and closure functions" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-190" y="598" width="680" height="70" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
